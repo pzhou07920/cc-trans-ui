@@ -1,7 +1,4 @@
-# Sample workflow for building and deploying a Next.js site to GitHub Pages
-#
-# To get started with Next.js see: https://nextjs.org/docs/getting-started
-#
+# This pipeline builds the Next.js app and uploads the artifact to an S3 bucket.
 name: Build and Upload Next.js to S3
 
 on:
@@ -14,6 +11,7 @@ on:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
+  contents: read
   id-token: write
 #   contents: read
 #   pages: write
