@@ -2,7 +2,7 @@
 #
 # To get started with Next.js see: https://nextjs.org/docs/getting-started
 #
-name: Deploy Next.js site to Pages
+name: Build and Upload Next.js to S3
 
 on:
   # Runs on pushes targeting the default branch
@@ -13,7 +13,8 @@ on:
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-# permissions:
+permissions:
+  id-token: write
 #   contents: read
 #   pages: write
 #   id-token: write
