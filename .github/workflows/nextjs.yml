@@ -96,7 +96,7 @@ jobs:
           # Your commands that require AWS credentials
           # Command to upload files to s3
           ls
-          cwd
+          pwd
           aws s3 sync ${{ env.artifact_name }} s3://pat-artifacts-s3-bucket/cc-trans-ui --delete
       # - name: Upload artifact
       #   uses: actions/upload-pages-artifact@v3
