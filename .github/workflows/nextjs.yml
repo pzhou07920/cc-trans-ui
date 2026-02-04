@@ -84,6 +84,8 @@ jobs:
         run: npm ci
       - name: Build with Next.js
         run: npx next build
+      - name: make builds directory
+        run: mkdir builds
       - name: Zip artifacts
         run: zip builds/${{ env.artifact_name }} -r .next
       - name: Configure AWS Credentials
