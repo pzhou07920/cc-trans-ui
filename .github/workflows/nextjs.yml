@@ -34,6 +34,11 @@ jobs:
         run: | 
           echo "COMMIT_SHA=${GITHUB_SHA:0:7}" >> $GITHUB_ENV
           echo "artifact_name=${{env.COMMIT_SHA}}-trans-cc-ui.zip" >> $GITHUB_ENV
+      - name: Check env vars
+        run: |
+          echo "Artifact Name: ${{ env.artifact_name }}"
+          echo "Commit SHA: ${{ env.COMMIT_SHA }}"
+          echo "GitHub SHA: $GITHUB_SHA"
       # - name: Detect package manager
       #   id: detect-package-manager
       #   run: |
