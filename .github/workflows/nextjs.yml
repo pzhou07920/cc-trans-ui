@@ -79,7 +79,7 @@ jobs:
       - name: Build with Next.js
         run: npx next build
       - name: Zip artifacts
-        run: zip ${{ artifact_name }} -r .next
+        run: zip ${{ env.artifact_name }} -r .next
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@main # Or a specific version
         with:
