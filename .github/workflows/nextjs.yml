@@ -23,6 +23,9 @@ concurrency:
   group: "ci-${{ github.ref }}"
   cancel-in-progress: false
 
+env: 
+  COMMIT_SHA: ${{ github.sha::7 }}
+  artifact_name: ${{ COMMIT_SHA }}-trans-cc-ui.zip
 jobs:
   # Build job
   build:
@@ -74,6 +77,8 @@ jobs:
         run: npm ci
       - name: Build with Next.js
         run: npx next build
+      - name: Zip artifacts
+        run: zip ${{ artifact_name }} -r .next
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@main # Or a specific version
         with:
@@ -83,7 +88,7 @@ jobs:
         run: |
           # Your commands that require AWS credentials
           # Command to upload files to s3
-          aws s3 sync .next s3://pat-artifacts-s3-bucket/cc-trans-ui --delete
+          aws s3 sync ${{ artifact_name }} s3://pat-artifacts-s3-bucket/cc-trans-ui --delete
       # - name: Upload artifact
       #   uses: actions/upload-pages-artifact@v3
       #   with:
