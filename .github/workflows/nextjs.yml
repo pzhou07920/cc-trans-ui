@@ -23,8 +23,6 @@ concurrency:
   group: "ci-${{ github.ref }}"
   cancel-in-progress: false
 
-env: 
-  artifact_name: ${{ COMMIT_SHA }}-trans-cc-ui.zip
 jobs:
   # Build job
   build:
@@ -33,7 +31,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Shorten commit SHA
-        run: echo "COMMIT_SHA=${github.sha:0:7}" >> $GITHUB_ENV
+        run: | 
+          echo "COMMIT_SHA=${github.sha:0:7}" >> $GITHUB_ENV
+          echo "Artifact name set to ${COMMIT_SHA}-trans-cc-ui.zip"
       # - name: Detect package manager
       #   id: detect-package-manager
       #   run: |
