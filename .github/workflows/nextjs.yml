@@ -33,7 +33,7 @@ jobs:
       - name: Shorten commit SHA
         run: | 
           echo "COMMIT_SHA=${github.sha:0:7}" >> $GITHUB_ENV
-          echo "Artifact name set to ${COMMIT_SHA}-trans-cc-ui.zip"
+          echo "artifact_name=${COMMIT_SHA}-trans-cc-ui.zip" >> $GITHUB_ENV
       # - name: Detect package manager
       #   id: detect-package-manager
       #   run: |
